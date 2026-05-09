@@ -23,6 +23,7 @@
 /* Begin PBXFileReference section */
 		156BE7482FAFE9BC0094C95C /* GCDWebServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCDWebServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		156BE7532FAFE9BC0094C95C /* GCDWebServerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCDWebServerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		156BE7F22FAFF17A0094C95C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -93,6 +94,7 @@
 				156BE74A2FAFE9BC0094C95C /* GCDWebServer */,
 				156BE7572FAFE9BC0094C95C /* GCDWebServerTests */,
 				156BE7492FAFE9BC0094C95C /* Products */,
+				156BE7F22FAFF17A0094C95C /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
