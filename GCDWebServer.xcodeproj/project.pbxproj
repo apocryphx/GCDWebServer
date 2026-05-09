@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		156BE7542FAFE9BC0094C95C /* GCDWebServer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 156BE7482FAFE9BC0094C95C /* GCDWebServer.framework */; };
+		156BE7A92FAFEE850094C95C /* CHANGES-2026-05-09-security-hardening.md in Resources */ = {isa = PBXBuildFile; fileRef = 156BE7A82FAFEE850094C95C /* CHANGES-2026-05-09-security-hardening.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,13 +24,27 @@
 /* Begin PBXFileReference section */
 		156BE7482FAFE9BC0094C95C /* GCDWebServer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GCDWebServer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		156BE7532FAFE9BC0094C95C /* GCDWebServerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GCDWebServerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		156BE7A82FAFEE850094C95C /* CHANGES-2026-05-09-security-hardening.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "CHANGES-2026-05-09-security-hardening.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		156BE75A2FAFE9BC0094C95C /* Exceptions for "GCDWebServer" folder in "GCDWebServer" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			publicHeaders = (
+				Core/GCDWebServerConnection.h,
+				Core/GCDWebServerFunctions.h,
+				Core/GCDWebServerHTTPStatusCodes.h,
+				Core/GCDWebServerRequest.h,
+				Core/GCDWebServerResponse.h,
 				GCDWebServer.h,
+				Requests/GCDWebServerDataRequest.h,
+				Requests/GCDWebServerFileRequest.h,
+				Requests/GCDWebServerMultiPartFormRequest.h,
+				Requests/GCDWebServerURLEncodedFormRequest.h,
+				Responses/GCDWebServerDataResponse.h,
+				Responses/GCDWebServerErrorResponse.h,
+				Responses/GCDWebServerFileResponse.h,
+				Responses/GCDWebServerStreamedResponse.h,
 			);
 			target = 156BE7472FAFE9BC0094C95C /* GCDWebServer */;
 		};
@@ -76,6 +91,7 @@
 				156BE74A2FAFE9BC0094C95C /* GCDWebServer */,
 				156BE7572FAFE9BC0094C95C /* GCDWebServerTests */,
 				156BE7492FAFE9BC0094C95C /* Products */,
+				156BE7A82FAFEE850094C95C /* CHANGES-2026-05-09-security-hardening.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,6 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				156BE7A92FAFEE850094C95C /* CHANGES-2026-05-09-security-hardening.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
