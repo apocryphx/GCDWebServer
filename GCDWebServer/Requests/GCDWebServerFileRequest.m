@@ -85,9 +85,7 @@ static BOOL _CreateSecureTemporaryFile(NSString* prefix, NSString** outPath, int
 }
 
 - (instancetype)initWithMethod:(NSString*)method url:(NSURL*)url headers:(NSDictionary<NSString*, NSString*>*)headers path:(NSString*)path query:(NSDictionary<NSString*, NSString*>*)query {
-  if ((self = [super initWithMethod:method url:url headers:headers path:path query:query])) {
-    _temporaryPath = nil;
-  }
+  self = [super initWithMethod:method url:url headers:headers path:path query:query];
   return self;
 }
 

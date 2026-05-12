@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 100;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -72,18 +72,14 @@
 /* Begin PBXFrameworksBuildPhase section */
 		156BE7452FAFE9BC0094C95C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		156BE7502FAFE9BC0094C95C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 				156BE7542FAFE9BC0094C95C /* GCDWebServer.framework in Frameworks */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -112,10 +108,8 @@
 /* Begin PBXHeadersBuildPhase section */
 		156BE7432FAFE9BC0094C95C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
@@ -131,14 +125,10 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			fileSystemSynchronizedGroups = (
 				156BE74A2FAFE9BC0094C95C /* GCDWebServer */,
 			);
 			name = GCDWebServer;
-			packageProductDependencies = (
-			);
 			productName = GCDWebServer;
 			productReference = 156BE7482FAFE9BC0094C95C /* GCDWebServer.framework */;
 			productType = "com.apple.product-type.framework";
@@ -160,8 +150,6 @@
 				156BE7572FAFE9BC0094C95C /* GCDWebServerTests */,
 			);
 			name = GCDWebServerTests;
-			packageProductDependencies = (
-			);
 			productName = GCDWebServerTests;
 			productReference = 156BE7532FAFE9BC0094C95C /* GCDWebServerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -192,7 +180,7 @@
 			);
 			mainGroup = 156BE73E2FAFE9BC0094C95C;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 100;
 			productRefGroup = 156BE7492FAFE9BC0094C95C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -206,34 +194,26 @@
 /* Begin PBXResourcesBuildPhase section */
 		156BE7462FAFE9BC0094C95C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		156BE7512FAFE9BC0094C95C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		156BE7442FAFE9BC0094C95C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		156BE74F2FAFE9BC0094C95C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -246,7 +226,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		156BE75C2FAFE9BC0094C95C /* Debug */ = {
+		156BE75C2FAFE9BC0094C95C /* Debug configuration for PBXNativeTarget "GCDWebServer" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -266,6 +246,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
@@ -277,7 +258,7 @@
 			};
 			name = Debug;
 		};
-		156BE75D2FAFE9BC0094C95C /* Release */ = {
+		156BE75D2FAFE9BC0094C95C /* Release configuration for PBXNativeTarget "GCDWebServer" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +278,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
@@ -308,7 +290,7 @@
 			};
 			name = Release;
 		};
-		156BE75E2FAFE9BC0094C95C /* Debug */ = {
+		156BE75E2FAFE9BC0094C95C /* Debug configuration for PBXProject "GCDWebServer" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -373,7 +355,7 @@
 			};
 			name = Debug;
 		};
-		156BE75F2FAFE9BC0094C95C /* Release */ = {
+		156BE75F2FAFE9BC0094C95C /* Release configuration for PBXProject "GCDWebServer" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -431,7 +413,7 @@
 			};
 			name = Release;
 		};
-		156BE7612FAFE9BC0094C95C /* Debug */ = {
+		156BE7612FAFE9BC0094C95C /* Debug configuration for PBXNativeTarget "GCDWebServerTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -446,7 +428,7 @@
 			};
 			name = Debug;
 		};
-		156BE7622FAFE9BC0094C95C /* Release */ = {
+		156BE7622FAFE9BC0094C95C /* Release configuration for PBXNativeTarget "GCDWebServerTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -467,28 +449,25 @@
 		156BE7422FAFE9BC0094C95C /* Build configuration list for PBXProject "GCDWebServer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				156BE75E2FAFE9BC0094C95C /* Debug */,
-				156BE75F2FAFE9BC0094C95C /* Release */,
+				156BE75E2FAFE9BC0094C95C /* Debug configuration for PBXProject "GCDWebServer" */,
+				156BE75F2FAFE9BC0094C95C /* Release configuration for PBXProject "GCDWebServer" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		156BE75B2FAFE9BC0094C95C /* Build configuration list for PBXNativeTarget "GCDWebServer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				156BE75C2FAFE9BC0094C95C /* Debug */,
-				156BE75D2FAFE9BC0094C95C /* Release */,
+				156BE75C2FAFE9BC0094C95C /* Debug configuration for PBXNativeTarget "GCDWebServer" */,
+				156BE75D2FAFE9BC0094C95C /* Release configuration for PBXNativeTarget "GCDWebServer" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		156BE7602FAFE9BC0094C95C /* Build configuration list for PBXNativeTarget "GCDWebServerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				156BE7612FAFE9BC0094C95C /* Debug */,
-				156BE7622FAFE9BC0094C95C /* Release */,
+				156BE7612FAFE9BC0094C95C /* Debug configuration for PBXNativeTarget "GCDWebServerTests" */,
+				156BE7622FAFE9BC0094C95C /* Release configuration for PBXNativeTarget "GCDWebServerTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
