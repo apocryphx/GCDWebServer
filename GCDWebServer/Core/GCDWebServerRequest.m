@@ -141,12 +141,44 @@ NSString* const GCDWebServerRequestAttribute_RegexCaptures = @"GCDWebServerReque
 }
 
 - (BOOL)close:(NSError**)error {
-  GWS_DCHECK(_finished);
+  if (!_finished) {
+    if (error) {
+      *error = [NSError errorWithDomain:kZlibErrorDomain
+                                   code:Z_BUF_ERROR
+                               userInfo:@{NSLocalizedDescriptionKey : @"Incomplete gzip request body"}];
+    }
+    inflateEnd(&_stream);
+    return NO;
+  }
   inflateEnd(&_stream);
   return [super close:error];
 }
 
 @end
+
+static inline BOOL _ParseUnsignedInteger(NSString* string, NSUInteger* value) {
+  if (string.length == 0) {
+    return NO;
+  }
+
+  NSUInteger result = 0;
+  for (NSUInteger i = 0; i < string.length; ++i) {
+    unichar c = [string characterAtIndex:i];
+    if ((c < '0') || (c > '9')) {
+      return NO;
+    }
+    NSUInteger digit = (NSUInteger)(c - '0');
+    if ((result > (NSUIntegerMax / 10)) || ((result == (NSUIntegerMax / 10)) && (digit > (NSUIntegerMax % 10)))) {
+      return NO;
+    }
+    result = result * 10 + digit;
+  }
+
+  if (value) {
+    *value = result;
+  }
+  return YES;
+}
 
 @implementation GCDWebServerRequest {
   BOOL _opened;
@@ -167,8 +199,8 @@ NSString* const GCDWebServerRequestAttribute_RegexCaptures = @"GCDWebServerReque
     _usesChunkedTransferEncoding = [GCDWebServerNormalizeHeaderValue([_headers objectForKey:@"Transfer-Encoding"]) isEqualToString:@"chunked"];
     NSString* lengthHeader = [_headers objectForKey:@"Content-Length"];
     if (lengthHeader) {
-      NSInteger length = [lengthHeader integerValue];
-      if (_usesChunkedTransferEncoding || (length < 0)) {
+      NSUInteger length = 0;
+      if (_usesChunkedTransferEncoding || !_ParseUnsignedInteger(lengthHeader, &length)) {
         GWS_LOG_WARNING(@"Invalid 'Content-Length' header '%@' for '%@' request on \"%@\"", lengthHeader, _method, _URL);
         GWS_DNOT_REACHED();
         return nil;
@@ -205,16 +237,18 @@ NSString* const GCDWebServerRequestAttribute_RegexCaptures = @"GCDWebServerReque
           components = [(NSString*)[components firstObject] componentsSeparatedByString:@"-"];
           if (components.count == 2) {
             NSString* startString = [components objectAtIndex:0];
-            NSInteger startValue = [startString integerValue];
             NSString* endString = [components objectAtIndex:1];
-            NSInteger endValue = [endString integerValue];
-            if (startString.length && (startValue >= 0) && endString.length && (endValue >= startValue)) {  // The second 500 bytes: "500-999"
+            NSUInteger startValue = 0;
+            NSUInteger endValue = 0;
+            BOOL hasStartValue = _ParseUnsignedInteger(startString, &startValue);
+            BOOL hasEndValue = _ParseUnsignedInteger(endString, &endValue);
+            if (hasStartValue && hasEndValue && (endValue >= startValue) && ((endValue - startValue) < NSUIntegerMax)) {  // The second 500 bytes: "500-999"
               _byteRange.location = startValue;
               _byteRange.length = endValue - startValue + 1;
-            } else if (startString.length && (startValue >= 0)) {  // The bytes after 9500 bytes: "9500-"
+            } else if (hasStartValue && (endString.length == 0)) {  // The bytes after 9500 bytes: "9500-"
               _byteRange.location = startValue;
               _byteRange.length = NSUIntegerMax;
-            } else if (endString.length && (endValue > 0)) {  // The final 500 bytes: "-500"
+            } else if ((startString.length == 0) && hasEndValue && (endValue > 0)) {  // The final 500 bytes: "-500"
               _byteRange.location = NSUIntegerMax;
               _byteRange.length = endValue;
             }

@@ -174,6 +174,31 @@
   XCTAssertEqualObjects(body, [NSData dataWithBytes:expected length:10]);
 }
 
+- (void)testInvalidRangeRequestIsIgnored {
+  NSMutableData* data = [NSMutableData dataWithCapacity:100];
+  for (int i = 0; i < 100; i++) {
+    uint8_t b = (uint8_t)i;
+    [data appendBytes:&b length:1];
+  }
+  NSString* path = [self writeTempFileWithContents:data extension:@"bin"];
+
+  [self.server addGETHandlerForPath:@"/file"
+                           filePath:path
+                       isAttachment:NO
+                           cacheAge:0
+                 allowRangeRequests:YES];
+  [self startServer];
+
+  NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:[self urlForPath:@"/file"]];
+  [req setValue:@"bytes=10junk-19" forHTTPHeaderField:@"Range"];
+  NSHTTPURLResponse* resp = nil;
+  NSData* body = nil;
+  [self performRequest:req response:&resp body:&body];
+
+  XCTAssertEqual(resp.statusCode, 200);
+  XCTAssertEqualObjects(body, data);
+}
+
 - (void)testURLEncodedFormPOST {
   __block NSDictionary* receivedArgs = nil;
   [self.server addHandlerForMethod:@"POST"

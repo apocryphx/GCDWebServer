@@ -1019,6 +1019,14 @@ static inline NSString* _EncodeBase64(NSString* string) {
                }];
 }
 
+static inline NSString* _EscapeHTMLString(NSString* string) {
+  string = [string stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
+  string = [string stringByReplacingOccurrencesOfString:@"<" withString:@"&lt;"];
+  string = [string stringByReplacingOccurrencesOfString:@">" withString:@"&gt;"];
+  string = [string stringByReplacingOccurrencesOfString:@"\"" withString:@"&quot;"];
+  return string;
+}
+
 - (GCDWebServerResponse*)_responseWithContentsOfDirectory:(NSString*)path {
   NSArray* contents = [[[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL] sortedArrayUsingSelector:@selector(localizedStandardCompare:)];
   if (contents == nil) {
@@ -1037,10 +1045,11 @@ static inline NSString* _EncodeBase64(NSString* string) {
       NSString* escapedFile = [entry stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 #pragma clang diagnostic pop
       GWS_DCHECK(escapedFile);
+      NSString* escapedEntry = _EscapeHTMLString(entry);
       if ([type isEqualToString:NSFileTypeRegular]) {
-        [html appendFormat:@"<li><a href=\"%@\">%@</a></li>\n", escapedFile, entry];
+        [html appendFormat:@"<li><a href=\"%@\">%@</a></li>\n", escapedFile, escapedEntry];
       } else if ([type isEqualToString:NSFileTypeDirectory]) {
-        [html appendFormat:@"<li><a href=\"%@/\">%@/</a></li>\n", escapedFile, entry];
+        [html appendFormat:@"<li><a href=\"%@/\">%@/</a></li>\n", escapedFile, escapedEntry];
       }
     }
   }

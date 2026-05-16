@@ -170,7 +170,54 @@
   return self;
 }
 
+static inline BOOL _IsValidHTTPHeaderFieldName(NSString* header) {
+  if (header.length == 0) {
+    return NO;
+  }
+
+  const char* bytes = header.UTF8String;
+  if (bytes == NULL) {
+    return NO;
+  }
+  for (NSUInteger i = 0; bytes[i] != 0; ++i) {
+    unsigned char c = (unsigned char)bytes[i];
+    BOOL valid = ((c >= 'A') && (c <= 'Z')) ||
+                 ((c >= 'a') && (c <= 'z')) ||
+                 ((c >= '0') && (c <= '9')) ||
+                 (c == '!') || (c == '#') || (c == '$') || (c == '%') ||
+                 (c == '&') || (c == '\'') || (c == '*') || (c == '+') ||
+                 (c == '-') || (c == '.') || (c == '^') || (c == '_') ||
+                 (c == '`') || (c == '|') || (c == '~');
+    if (!valid) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
+static inline BOOL _IsValidHTTPHeaderFieldValue(NSString* value) {
+  const char* bytes = value.UTF8String;
+  if (bytes == NULL) {
+    return NO;
+  }
+  for (NSUInteger i = 0; bytes[i] != 0; ++i) {
+    unsigned char c = (unsigned char)bytes[i];
+    if ((c == '\r') || (c == '\n') || (c == 0x7F) || ((c < 0x20) && (c != '\t'))) {
+      return NO;
+    }
+  }
+  return YES;
+}
+
 - (void)setValue:(NSString*)value forAdditionalHeader:(NSString*)header {
+  if (!_IsValidHTTPHeaderFieldName(header)) {
+    GWS_LOG_ERROR(@"Ignoring invalid HTTP response header field name \"%@\"", header);
+    return;
+  }
+  if (value && !_IsValidHTTPHeaderFieldValue(value)) {
+    GWS_LOG_ERROR(@"Ignoring invalid HTTP response header field value for \"%@\"", header);
+    return;
+  }
   [_additionalHeaders setValue:value forKey:header];
 }
 
