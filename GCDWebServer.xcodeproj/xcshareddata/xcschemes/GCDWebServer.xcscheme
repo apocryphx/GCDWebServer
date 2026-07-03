@@ -17,6 +17,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "156BE7472FAFE9BC0094C95C"
                BuildableName = "GCDWebServer.framework"
+               BlueprintName = "GCDWebServer"
                ReferencedContainer = "container:GCDWebServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -36,6 +37,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "156BE7522FAFE9BC0094C95C"
                BuildableName = "GCDWebServerTests.xctest"
+               BlueprintName = "GCDWebServerTests"
                ReferencedContainer = "container:GCDWebServer.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -64,6 +66,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "156BE7472FAFE9BC0094C95C"
             BuildableName = "GCDWebServer.framework"
+            BlueprintName = "GCDWebServer"
             ReferencedContainer = "container:GCDWebServer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
