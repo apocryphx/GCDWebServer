@@ -2,7 +2,7 @@
 
 A macOS framework wrapper around [GCDWebServer](https://github.com/swisspol/GCDWebServer) — Pierre-Olivier Latour's lightweight, GCD-based embedded HTTP server for Cocoa.
 
-This is a **fork**. The upstream library is archived and no longer maintained; this fork repackages the core server as an Xcode framework target and adds security hardening fixes specific to its use as the embedded HTTP layer of [ES Memory](https://github.com/apocryphx/ES-Memory). All changes relative to upstream are documented in [`GCDWebserver/CHANGES.md`](GCDWebserver/CHANGES.md).
+This is a **fork**. The upstream library is archived and no longer maintained; this fork repackages the core server as an Xcode framework target and adds security hardening fixes specific to its use as the embedded HTTP layer of [ES A](https://github.com/apocryphx/ES-Memory)rchive. All changes relative to upstream are documented in [`GCDWebserver/CHANGES.md`](GCDWebserver/CHANGES.md).
 
 ## What's included
 
@@ -88,4 +88,4 @@ BSD 3-Clause, inherited from upstream — see [`GCDWebserver/LICENSE.txt`](GCDWe
 ## Credits
 
 - **Original author:** Pierre-Olivier Latour — [github.com/swisspol/GCDWebServer](https://github.com/swisspol/GCDWebServer) (archived)
-- **This fork:** Kolja Wawrowsky, packaging and security hardening for [ES Memory](https://github.com/apocryphx/ES-Memory)
+- **This fork:** Kolja Wawrowsky, packaging and security hardening for [ES A](https://github.com/apocryphx/ES-Memory)rchive
