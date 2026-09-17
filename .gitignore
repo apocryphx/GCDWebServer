@@ -1,16 +1,10 @@
-.DS_Store
-DerivedData/
-
-xcuserdata/
-*.xcuserstate
-*.xcscmblueprint
-
 # macOS
 .DS_Store
 
 # Xcode — user-specific state
 xcuserdata/
 *.xcuserstate
+*.xcscmblueprint
 
 # Build products and coverage output
 build/
