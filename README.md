@@ -83,7 +83,7 @@ The server is intended to be used bound to `localhost` only (`GCDWebServerOption
 
 ## License
 
-BSD 3-Clause, inherited from upstream — see [`GCDWebserver/LICENSE.txt`](GCDWebserver/LICENSE.txt). Original copyright Pierre-Olivier Latour.
+BSD 3-Clause, inherited from upstream — see [`GCDWebServer/LICENSE.txt`](GCDWebServer/LICENSE.txt). Original copyright Pierre-Olivier Latour.
 
 ## Credits
 
